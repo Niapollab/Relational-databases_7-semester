@@ -1,29 +1,39 @@
 DECLARE
-  u_id university.univ_id%TYPE;
-  u_name university.univ_name%TYPE;
-  u_rating university.rating%TYPE;
-  u_city university.city%TYPE;
+  U_ID               UNIVERSITY.UNIV_ID%TYPE;
+  U_NAME             UNIVERSITY.UNIV_NAME%TYPE;
+  U_RATING           UNIVERSITY.RATING%TYPE;
+  U_CITY             UNIVERSITY.CITY%TYPE;
 
-CURSOR uw_rating_g_400 IS SELECT * FROM university WHERE rating > 400;
+  CURSOR UW_RATING_G_400 IS
+    SELECT
+      *
+    FROM
+      UNIVERSITY
+    WHERE
+      RATING > 400;
 
-u_rating_exception EXCEPTION;
+  U_RATING_EXCEPTION EXCEPTION;
 
 BEGIN
-  OPEN uw_rating_g_400;
-  FETCH uw_rating_g_400 INTO u_id, u_name, u_rating, u_city;
-  WHILE uw_rating_g_400%FOUND LOOP
+  OPEN UW_RATING_G_400;
+
+  FETCH UW_RATING_G_400 INTO U_ID, U_NAME, U_RATING, U_CITY;
+
+  WHILE UW_RATING_G_400%FOUND LOOP
     BEGIN
-    
-    IF u_city <> 'ÂÎÐÎÍÅÆ' THEN
-      RAISE u_rating_exception;
-    END IF;
+      IF U_CITY <> 'ÂÎÐÎÍÅÆ' THEN
+        RAISE U_RATING_EXCEPTION;
+      END IF;
 
-    FETCH uw_rating_g_400 INTO u_id, u_name, u_rating, u_city;
-    
-    EXCEPTION WHEN u_rating_exception THEN
-      dbms_output.put_line(u_name||' '||u_rating||' '||u_city);
-      FETCH uw_rating_g_400 INTO u_id, u_name, u_rating, u_city;
-
+      FETCH UW_RATING_G_400 INTO U_ID, U_NAME, U_RATING, U_CITY;
+    EXCEPTION
+      WHEN U_RATING_EXCEPTION THEN
+        DBMS_OUTPUT.PUT_LINE(U_NAME
+          ||' '
+          ||U_RATING
+          ||' '
+          ||U_CITY);
+        FETCH UW_RATING_G_400 INTO U_ID, U_NAME, U_RATING, U_CITY;
     END;
   END LOOP;
 END;
