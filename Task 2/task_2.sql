@@ -25,7 +25,7 @@ DECLARE
   END;
 
 BEGIN
-  GRADES_SUM := SUM_OF_GRADES_BY_SUBJECT('&promt_student_surname');
+  GRADES_SUM := SUM_OF_GRADES_BY_SUBJECT('&PROMT_STUDENT_SURNAME');
   DBMS_OUTPUT.PUT_LINE('Сумма оценок по предметам: '
     ||GRADES_SUM);
 END;
