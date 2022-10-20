@@ -18,12 +18,11 @@ DECLARE
     NEW_AVERAGE   INTEGER;
     AVG_EXCEPTION EXCEPTION;
     PRAGMA EXCEPTION_INIT (AVG_EXCEPTION, -20001);
+    PRAGMA AUTONOMOUS_TRANSACTION;
 
 BEGIN
     SELECT
-        AVG(EXAMS.MARK),
-        (SUM(EXAMS.MARK) + :NEW.MARK) / (COUNT(EXAMS.MARK) + 1) INTO OLD_AVERAGE,
-        NEW_AVERAGE
+        AVG(EXAMS.MARK), (SUM(EXAMS.MARK) + :NEW.MARK) / (COUNT(EXAMS.MARK) + 1) INTO OLD_AVERAGE, NEW_AVERAGE
     FROM
         EXAMS
     WHERE
@@ -39,6 +38,8 @@ BEGIN
             OLD_AVERAGE,
             NEW_AVERAGE
         );
+
+        COMMIT;
 
         RAISE_APPLICATION_ERROR(-20001, 'Средний балл превосходит значение максимального отклонения "'
             ||EVASION
