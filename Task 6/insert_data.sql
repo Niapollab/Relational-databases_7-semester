@@ -368,7 +368,7 @@ INSERT INTO OPERATION (
     1,
     2,
     'Операция 1',
-    TO_DATE('02-09-2022', 'MM-DD-YYYY'),
+    TO_DSINTERVAL('80 12:30:00'),
     34
 );
 
@@ -382,7 +382,7 @@ INSERT INTO OPERATION (
     2,
     1,
     'Операция 2',
-    TO_DATE('03-06-2022', 'MM-DD-YYYY'),
+    TO_DSINTERVAL('69 17:35:00'),
     44
 );
 
@@ -396,7 +396,7 @@ INSERT INTO OPERATION (
     3,
     4,
     'Операция 3',
-    TO_DATE('07-07-2022', 'MM-DD-YYYY'),
+    TO_DSINTERVAL('10 00:00:00'),
     21
 );
 
