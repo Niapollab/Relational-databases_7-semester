@@ -9,19 +9,28 @@
 * Загрузите расширение [Oracle Developer Tools for VS Code (SQL and PLSQL)](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools);
 
 ## Инструкция
-1. Откройте консоль в директории [Environment](/Environment);
-2. В консоли выполните:
+
+Вы можете воссоздать контейнер из предсобранного образа (*рекомендованный вариант*) или собрать его вручную.
+
+### Запуск предсобранной версии
+Для запуска контейнера откройте консоль и выполните: `docker run --name oracledb -p 1521:1521 -p 5500:5500 -p 8080:8080 --cpus=0.5 -m 2g -td ghcr.io/niapollab/rsubd`.
+
+### Ручная сборка
+1. Клонируйте репозиторий;
+2. Откройте консоль в директории [Environment](/Environment);
+3. В консоли выполните:
     ```sh
     build
     ```
-3. Дождитесь завершения построения контейнера;
-4. Добавьте соединение:
-    ![Новое соединение](/Environment/.resources/oracle_developer_tools_create_connection.png)
-    > [!TIP]
-    > Пароль: Passw0rd
+4. Дождитесь завершения построения контейнера.
+
+### Настройка соединения в VSCode
+![Новое соединение](/Environment/.resources/oracle_developer_tools_create_connection.png)
+> [!TIP]
+> Пароль: Passw0rd
 
 > [!NOTE]
-> [Dockerfile](/Environment/bin/Dockerfile) базируется на [данном репозитории](https://github.com/oracle/docker-images/tree/main/OracleDatabase/SingleInstance/dockerfiles/21.3.0)
+> [Dockerfile](/Environment/bin/Dockerfile) базируется на [данном репозитории](https://github.com/oracle/docker-images/tree/main/OracleDatabase/SingleInstance/dockerfiles/21.3.0).
 
 # Задачи
 
