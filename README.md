@@ -4,25 +4,24 @@
 # Установка окружения
 
 ## Подготовка
-* Загрузите образ [Oracle Database 21c Express Edition for Linux x64 (OL7)](https://www.oracle.com/database/technologies/xe-downloads.html);
 * Установите [Docker](https://learn.microsoft.com/ru-ru/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-Server);
 * Установите [Visual Studio Code](https://code.visualstudio.com/download);
 * Загрузите расширение [Oracle Developer Tools for VS Code (SQL and PLSQL)](https://marketplace.visualstudio.com/items?itemName=Oracle.oracledevtools);
 
 ## Инструкция
-1. Переместите загруженный образ в директорию [image](/Environment/image/) внутри [Environment](/Environment);
-2. Откройте консоль в директории [Environment](/Environment);
-3. В консоли выполните:
+1. Откройте консоль в директории [Environment](/Environment);
+2. В консоли выполните:
     ```sh
     build
     ```
-4. Дождитесь завершения построения контейнера;
-5. Добавьте соединение:
+3. Дождитесь завершения построения контейнера;
+4. Добавьте соединение:
     ![Новое соединение](/Environment/.resources/oracle_developer_tools_create_connection.png)
+    > [!TIP]
+    > Пароль: Passw0rd
 
-    <span style="color:yellow">Пароль: Passw0rd</span>
-
-P. S. [Dockerfile](/Environment/bin/Dockerfile) базируется на [данном репозитории](https://github.com/oracle/docker-images/tree/main/OracleDatabase/SingleInstance/dockerfiles/21.3.0)
+> [!NOTE]
+> [Dockerfile](/Environment/bin/Dockerfile) базируется на [данном репозитории](https://github.com/oracle/docker-images/tree/main/OracleDatabase/SingleInstance/dockerfiles/21.3.0)
 
 # Задачи
 
